@@ -1,0 +1,86 @@
+server:
+  name: ag-layout-demo
+
+kitex:
+  server:
+    Port: 8886
+    AdaptivePort: true
+    ServiceName: ${server.name}_kitex
+    EnableIPRange: 0:255
+    Grpc:
+      enable: true
+      MaxConnectionIdle: 10
+
+hertz:
+  server:
+    port: 8887
+    adaptive-port: true
+    service-name: ${server.name}_hertz
+
+nacos:
+  config:
+    serveraddr: 127.0.0.1:8813
+    namespace: test
+    username: nacos
+    password: '{cipher}bmFjb3M2'
+    # dataids:
+    #   - dataid: test
+    #     group: test
+    #     type: yaml
+  naming:
+    serveraddr: ${nacos.config.serveraddr}
+    namespace: ${nacos.config.namespace}
+    username: ${nacos.config.username}
+    password: ${nacos.config.password}
+    
+    
+
+# nacos:
+#   config:
+#     # enableconfig: false
+#     # enablenaming: false
+#     enableconfig: true
+#     enablenaming: true
+#     serveraddr: 127.0.0.1:8813
+#     namespace: test
+#     username: nacos
+#     # password: nacos
+#     # password: '{cipher}bmFjb3M='
+#     password: '{cipher}bmFjb3M2'
+#     dataids:
+#       - dataid: test
+#         group: test
+#         type: yaml
+#       # - dataid: "aic_1.yaml"
+#       #   group: "DEFAULT_GROUP"
+#       #   type: yaml
+#     #   - dataid: "aic_2.yaml"
+#     #     group: "DEFAULT_GROUP"
+#     #     type: yaml
+
+# log:
+#   # log_level: debug
+#   log_level: info
+#   encoding: console           # json or console
+#   log_file_name: "./storage/logs/server.log"
+#   max_backups: 30
+#   max_age: 7
+#   max_size: 1024
+#   compress: true
+#   # console: false
+#   console: true
+
+aglog:
+  topHandler: [zap1]
+  zap:
+    logs:
+      zap1:
+        # log_level: info
+        log_level: debug
+        encoding: console           # json or console
+        # log_file_name: "logs/hhhzzzwww.log"
+        # max_backups: 30
+        # max_age: 7
+        # max_size: 1024
+        compress: true
+        console: true
