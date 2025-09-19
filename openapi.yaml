@@ -1,0 +1,309 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: ""
+    version: 0.0.1
+paths:
+    /v1/hello/get2:
+        get:
+            tags:
+                - HzwHello
+            operationId: HzwHello_HelloHzw
+            parameters:
+                - name: name
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply'
+    /v1/hzw/hello/:Name:
+        get:
+            tags:
+                - HzwHello
+            operationId: HzwHello_HelloHzw
+            parameters:
+                - name: name
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply'
+    /v1/hzw/hello2/:Name:
+        get:
+            tags:
+                - HzwHello
+            operationId: HzwHello_HelloHzw
+            parameters:
+                - name: name
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply'
+    /v1/hzw/hello3:
+        post:
+            tags:
+                - HzwHello
+            operationId: HzwHello_HelloHzw
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.hzw.HzwRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply'
+    /v1/logs/batch:
+        post:
+            tags:
+                - LogServer
+            operationId: LogServer_BatchLog
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.logs.BatchLogRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.logs.BatchLogResponse'
+    /v1/xxxx:
+        post:
+            tags:
+                - HzwHello
+            operationId: HzwHello_HelloHzwStream
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.hzw.HzwRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply'
+    /v2/hello/get2:
+        get:
+            tags:
+                - HzwHello2
+            operationId: HzwHello2_HelloHzw2
+            parameters:
+                - name: name
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply2'
+    /v2/hzw/hello/:Name:
+        get:
+            tags:
+                - HzwHello2
+            operationId: HzwHello2_HelloHzw2
+            parameters:
+                - name: name
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply2'
+    /v2/hzw/hello2/:Name:
+        get:
+            tags:
+                - HzwHello2
+            operationId: HzwHello2_HelloHzw2
+            parameters:
+                - name: name
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply2'
+    /v2/hzw/hello3:
+        post:
+            tags:
+                - HzwHello2
+            operationId: HzwHello2_HelloHzw2
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.hzw.HzwRequest2'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply2'
+    /v2/xxxx:
+        post:
+            tags:
+                - HzwHello2
+            operationId: HzwHello2_HelloHzwStream2
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.hzw.HzwRequest2'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.hzw.HzwReply2'
+components:
+    schemas:
+        api.hzw.HzwReply:
+            type: object
+            properties:
+                msg:
+                    type: string
+        api.hzw.HzwReply2:
+            type: object
+            properties:
+                msg:
+                    type: string
+        api.hzw.HzwRequest:
+            required:
+                - name
+            type: object
+            properties:
+                name:
+                    type: string
+        api.hzw.HzwRequest2:
+            type: object
+            properties:
+                name:
+                    type: string
+        api.logs.BatchLogRequest:
+            type: object
+            properties:
+                batchMeta:
+                    $ref: '#/components/schemas/api.logs.BatchMetadata'
+                logs:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/api.logs.LogEntry'
+        api.logs.BatchLogResponse:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    format: int32
+                message:
+                    type: string
+                requestId:
+                    type: string
+                acceptedCount:
+                    type: integer
+                    format: int32
+                rejectedCount:
+                    type: integer
+                    format: int32
+                rejectedDetails:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/api.logs.BatchLogResponse_RejectedDetail'
+            description: 批量响应
+        api.logs.BatchLogResponse_RejectedDetail:
+            type: object
+            properties:
+                index:
+                    type: integer
+                    format: int32
+                reason:
+                    type: string
+        api.logs.BatchMetadata:
+            type: object
+            properties:
+                host:
+                    type: string
+                hostName:
+                    type: string
+                processId:
+                    type: integer
+                    format: int32
+                processName:
+                    type: string
+                exts:
+                    type: object
+                    additionalProperties:
+                        type: string
+                    description: string app_id = 5;
+        api.logs.LogEntry:
+            type: object
+            properties:
+                timestamp:
+                    type: string
+                level:
+                    type: string
+                message:
+                    type: string
+                traceId:
+                    type: string
+                spanId:
+                    type: string
+                type:
+                    type: string
+                threadId:
+                    type: string
+                    description: 单条日志私有字段（可选，不重复传输共享信息）
+                threadName:
+                    type: string
+                orgNo:
+                    type: string
+                attrs:
+                    type: object
+                    additionalProperties:
+                        type: string
+tags:
+    - name: HzwHello
+    - name: HzwHello2
+    - name: LogServer
