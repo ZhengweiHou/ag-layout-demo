@@ -1,0 +1,50 @@
+server:
+  name: ag-layout-demo
+
+kitex:
+  server:
+    Port: 8886
+    AdaptivePort: true
+    ServiceName: ${server.name}_kitex
+    EnableIPRange: 0:255
+    Grpc:
+      enable: true
+      MaxConnectionIdle: 10
+
+hertz:
+  server:
+    port: 8887
+    adaptive-port: true
+    service-name: ${server.name}_hertz
+
+nacos:
+  config:
+    serveraddr: 127.0.0.1:8813
+    # namespace: test
+    namespace: public
+    username: nacos
+    password: '{cipher}bmFjb3M2'
+    # dataids:
+    #   - dataid: test
+    #     group: test
+    #     type: yaml
+  naming:
+    serveraddr: ${nacos.config.serveraddr}
+    namespace: ${nacos.config.namespace}
+    username: ${nacos.config.username}
+    password: ${nacos.config.password}
+    
+aglog:
+  topHandler: [zap1]
+  zap:
+    logs:
+      zap1:
+        # log_level: info
+        log_level: debug
+        encoding: console           # json or console
+        # log_file_name: "logs/hhhzzzwww.log"
+        # max_backups: 30
+        # max_age: 7
+        # max_size: 1024
+        compress: true
+        console: true
