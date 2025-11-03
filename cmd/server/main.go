@@ -2,7 +2,7 @@ package main
 
 import (
 	"ag-core/ag/ag_app"
-	"ag-layout-demo/api"
+	hertzServer "ag-core/contribute/aghertz/server"
 	"ag-layout-demo/internal/svcgen"
 	"flag"
 	"fmt"
@@ -57,32 +57,23 @@ var mainFx = fx.Module("main",
 	/** conf **/
 	// 初始化配置
 	fxs.FxAgConfModule,
+
 	// nacosconf
 	fxs.FxNacosConfigMode,
 	fxs.FxNacosNamingMode,
 	fxs.FxEnableNacosRemoteConfigMode,
-	// nettyClient
-	// fxs.FxNettyClientBaseModule,
-
-	/** DB **/
-	// fxs.FxAicGromdbModule,
 
 	// 根APP
 	fxs.FxAppMode,
 
 	fxs.FxAgSlogZapMode,
+
 	fxs.FxAgSlogMode,
 
 	/** BaseServer **/
-	// HttpServerBase
-	fxs.FxHertzWithRegistryServerBaseModule,
-	// KitexServerBase
-	fxs.FxKitexServerBaseModule,
+	hertzServer.FxAgHertzServerModule,
 
-	// hzwhello服务，适配层
-	api.FxAdapterModule(),
-	// hzwhello.FxHzwHelloHertzModule,
-	// hzwhello.FxHzwHelloKitexModule,
+	fxs.FxKitexServerBaseModule,
 
 	// 业务层实现
 	svcgen.FxServiceWithProxyModule(), // 业务层实现,包含代理层
