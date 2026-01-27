@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package student;
+
+import "google/api/annotations.proto";
+import "google/protobuf/descriptor.proto";
+
+option go_package = "ag-layout-demo/api/student";
+
+service studentService{
+    rpc createStudent (CreateStudentRequest) returns (Student){
+        option (google.api.http) = {
+            post: "student/create"  
+            body: "*"
+            response_body: "*"
+        };
+    };
+
+    rpc getStudent (GetStudentRequest) returns (Student){
+        option (google.api.http) = {
+            get: "student/get/:Stuno"
+            response_body: "*"
+            additional_bindings: [
+                { 
+                    get: "student/get"
+                    response_body: "*"
+                }
+            ]
+        };
+    };
+
+}
+
+
+message CreateStudentRequest {
+    string stuno = 1;
+    string name = 2;
+    int32 age = 3;
+}
+
+message GetStudentRequest {
+    string stuno = 1;
+}
+
+
+message Student {
+    int64 id = 1;
+    string stuno = 2;
+    string name = 3;
+    int32 age = 4;
+    int64 version = 5;
+    string fct = 6;
+    string lct = 7;
+}

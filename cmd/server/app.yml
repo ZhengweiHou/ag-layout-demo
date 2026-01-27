@@ -1,0 +1,92 @@
+server:
+  name: ag-layout-demo
+
+kitex:
+  server:
+    Port: 9996
+    AdaptivePort: true
+    ServiceName: ${server.name}-grpc
+    EnableIPRange: 0:255
+    Grpc:
+      enable: true
+      MaxConnectionIdle: 10
+
+hertz:
+  server:
+    port: 9997
+    adaptive-port: true
+    service-name: ${server.name}-http
+
+nacos:
+  config:
+    serveraddr: 127.0.0.1:8848
+    namespace: test
+    username: nacos
+    password: '{cipher}bmFjb3M2'
+    # dataids:
+    #   - dataid: test
+    #     group: test
+    #     type: yaml
+  naming:
+    serveraddr: ${nacos.config.serveraddr}
+    namespace: ${nacos.config.namespace}
+    username: ${nacos.config.username}
+    password: ${nacos.config.password}
+    
+data:
+  db:
+    user:
+      driver: mysql
+      dsn: "root:root@tcp(localhost:3306)/houzw?parseTime=True"    
+
+# agredis:
+#   config:
+#     addrs:
+#       - "127.0.0.1:6379"
+#     MaxRetries: 1
+#     ReadTimeout: 100
+
+aglog:
+  topHandler: [zap1]
+  zap:
+    logs:
+      zap1:
+        log_level: debug
+        encoding: console           # json or console
+        compress: true
+        console: true
+
+# nacos:
+#   config:
+#     # enableconfig: false
+#     # enablenaming: false
+#     enableconfig: true
+#     enablenaming: true
+#     serveraddr: 127.0.0.1:8813
+#     namespace: test
+#     username: nacos
+#     # password: nacos
+#     # password: '{cipher}bmFjb3M='
+#     password: '{cipher}bmFjb3M2'
+#     dataids:
+#       - dataid: test
+#         group: test
+#         type: yaml
+#       # - dataid: "aic_1.yaml"
+#       #   group: "DEFAULT_GROUP"
+#       #   type: yaml
+#     #   - dataid: "aic_2.yaml"
+#     #     group: "DEFAULT_GROUP"
+#     #     type: yaml
+
+# log:
+#   # log_level: debug
+#   log_level: info
+#   encoding: console           # json or console
+#   log_file_name: "./storage/logs/server.log"
+#   max_backups: 30
+#   max_age: 7
+#   max_size: 1024
+#   compress: true
+#   # console: false
+#   console: true
