@@ -3,9 +3,9 @@ server:
 
 kitex:
   server:
-    Port: 8886
+    Port: 9996
     AdaptivePort: true
-    ServiceName: ${server.name}_kitex
+    ServiceName: ${server.name}-grpc
     EnableIPRange: 0:255
     Grpc:
       enable: true
@@ -13,13 +13,13 @@ kitex:
 
 hertz:
   server:
-    port: 8887
+    port: 9997
     adaptive-port: true
-    service-name: ${server.name}_hertz
+    service-name: ${server.name}-http
 
 nacos:
   config:
-    serveraddr: 127.0.0.1:8813
+    serveraddr: 127.0.0.1:8848
     namespace: test
     username: nacos
     password: '{cipher}bmFjb3M2'
@@ -33,6 +33,30 @@ nacos:
     username: ${nacos.config.username}
     password: ${nacos.config.password}
     
+data:
+  db:
+    user:
+      driver: mysql
+      dsn: "root:root@tcp(localhost:3306)/houzw?parseTime=True"    
+
+# agredis:
+#   config:
+#     addrs:
+#       - "127.0.0.1:6379"
+#     MaxRetries: 1
+#     ReadTimeout: 100
+
+aglog:
+  topHandler: [zap1]
+  zap:
+    logs:
+      zap1:
+        log_level: debug
+        encoding: console           # json or console
+        compress: true
+        console: true
+  logserver: xxx
+  fanout:
     
 
 # nacos:
@@ -69,18 +93,3 @@ nacos:
 #   compress: true
 #   # console: false
 #   console: true
-
-aglog:
-  topHandler: [zap1]
-  zap:
-    logs:
-      zap1:
-        # log_level: info
-        log_level: debug
-        encoding: console           # json or console
-        # log_file_name: "logs/hhhzzzwww.log"
-        # max_backups: 30
-        # max_age: 7
-        # max_size: 1024
-        compress: true
-        console: true
