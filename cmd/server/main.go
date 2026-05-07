@@ -9,11 +9,8 @@ import (
 	"gitlab.allinfinance.com/aifgo/ag-core/fxs"
 
 	"gitlab.allinfinance.com/aifgo/ag-core/ag/ag_service"
-	"gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb"
-	"gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb/gormdb"
 	hserver "gitlab.allinfinance.com/aifgo/ag-core/contribute/aghertz/server"
 	kserver "gitlab.allinfinance.com/aifgo/ag-core/contribute/agkitex/server"
-	"gitlab.allinfinance.com/aifgo/ag-core/contribute/agnacos"
 
 	"go.uber.org/fx"
 
@@ -43,8 +40,8 @@ var mainFx = fx.Module("main",
 	fxs.FxAgConfModule,
 
 	// nacosconf
-	agnacos.FxNacosConfigMode,
-	agnacos.FxEnableNacosRemoteConfigMode,
+	// agnacos.FxNacosConfigMode,
+	// agnacos.FxEnableNacosRemoteConfigMode,
 
 	// 日志模块
 	ag_log.FxAglogMode,
@@ -62,8 +59,8 @@ var mainFx = fx.Module("main",
 	ag_service.FxAgServiceMode,
 
 	// 数据库模块
-	agdb.FxAgDbModule,
-	gormdb.FxAicGromdbModule,
+	// agdb.FxAgDbModule,
+	// gormdb.FxAicGromdbModule,
 
 	// 内部组件
 	internal.FxInternalModule,
