@@ -1,8 +1,10 @@
 package main
 
 import (
-	"gitlab.allinfinance.com/aifgo/ag-core/ag/ag_app"
 	"ag-layout-demo/internal"
+
+	"gitlab.allinfinance.com/aifgo/ag-core/ag/ag_app"
+	"gitlab.allinfinance.com/aifgo/ag-core/ag/ag_log"
 
 	"gitlab.allinfinance.com/aifgo/ag-core/fxs"
 
@@ -44,18 +46,17 @@ var mainFx = fx.Module("main",
 	agnacos.FxNacosConfigMode,
 	agnacos.FxEnableNacosRemoteConfigMode,
 
+	// 日志模块
+	ag_log.FxAglogMode,
+
 	// 根APP
 	fxs.FxAppMode,
 
 	// http服务
 	hserver.FxAgHertzServerModule,
+
 	// grpc服务
 	kserver.FxKitexServerBaseModule,
-
-	// 日志模块
-	fxs.FxAgSlogMode,
-	fxs.FxAgSlogZapMode,
-	// agslogzap.FxAgSlogZapMode,
 
 	// 服务基础模块
 	ag_service.FxAgServiceMode,
@@ -63,8 +64,6 @@ var mainFx = fx.Module("main",
 	// 数据库模块
 	agdb.FxAgDbModule,
 	gormdb.FxAicGromdbModule,
-
-	/** 项目内部组件 **/
 
 	// 内部组件
 	internal.FxInternalModule,

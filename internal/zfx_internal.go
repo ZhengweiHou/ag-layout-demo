@@ -8,7 +8,6 @@ import (
 )
 
 var FxInternalModule = fx.Module("fx-internal-module",
-	// headdev.FxHeadDevModule,
 	svcgen.FxServiceWithProxyModule(),
 	adpgen.FxAdapterModule(),
 )

@@ -1,9 +1,10 @@
 package internal
 
 import (
+	"ag-layout-demo/internal/svcgen"
+
 	"gitlab.allinfinance.com/aifgo/ag-core/ag/ag_common/agmetadata"
 	"gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb"
-	"ag-layout-demo/internal/svcgen"
 )
 
 func init() {
@@ -12,5 +13,6 @@ func init() {
 	agmetadata.RegMdKey("Tradeid")
 
 	// 注册事务
-	agdb.TransactionRegistry.RegTxForCall(svcgen.StudentServiceCreateStudentCallInfo)
+	// agdb.TransactionRegistry.RegTxForCall(svcgen.StudentServiceCreateStudentCallInfo)
+	svcgen.StudentServiceCreateStudentCallInfo.AddTag(agdb.TransactionTag, true)
 }
