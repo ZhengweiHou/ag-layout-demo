@@ -3,14 +3,14 @@ package main
 import (
 	"ag-layout-demo/internal"
 
-	"gitlab.allinfinance.com/aifgo/ag-core/ag/ag_app"
-	"gitlab.allinfinance.com/aifgo/ag-core/ag/ag_log"
+	"ag-core/ag/ag_app"
+	"ag-core/ag/ag_log"
 
-	"gitlab.allinfinance.com/aifgo/ag-core/fxs"
+	"ag-core/fxs"
 
-	"gitlab.allinfinance.com/aifgo/ag-core/ag/ag_service"
-	hserver "gitlab.allinfinance.com/aifgo/ag-core/contribute/aghertz/server"
-	kserver "gitlab.allinfinance.com/aifgo/ag-core/contribute/agkitex/server"
+	"ag-core/ag/ag_service"
+	hserver "ag-core/contribute/aghertz/server"
+	kserver "ag-core/contribute/agkitex/server"
 
 	"go.uber.org/fx"
 
